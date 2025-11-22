@@ -73,17 +73,117 @@ const i18n = {
 
 /* --- DB --- */
 const signatures = [
+    // 🖼️ Şəkil Faylları (IMG)
     { hex: "FF D8 FF", type: "JPEG Image", cat: "IMG" },
     { hex: "89 50 4E 47", type: "PNG Image", cat: "IMG" },
     { hex: "47 49 46 38", type: "GIF Image", cat: "IMG" },
+    { hex: "42 4D", type: "BMP Image", cat: "IMG" },
+    { hex: "49 49 2A 00", type: "TIFF Image (Little-Endian)", cat: "IMG" },
+    { hex: "4D 4D 00 2A", type: "TIFF Image (Big-Endian)", cat: "IMG" },
+    { hex: "00 00 01 00", type: "ICO/CUR (Icon/Cursor)", cat: "IMG" },
+    { hex: "38 42 50 53", type: "Photoshop Document (PSD)", cat: "IMG" },
+    { hex: "00 00 00 0C 6A 50 20 20", type: "JPEG 2000 Image (JP2)", cat: "IMG" },
+    { hex: "52 49 46 46", type: "WebP/WAV/AVI (RIFF Container)", cat: "IMG/MED" }, // Daha dərin yoxlama tələb olunur
+    { hex: "49 49 52 4F", type: "Canon RAW 2 (CR2)", cat: "IMG" },
+    { hex: "52 54 52 49", type: "Nikon RAW (NEF)", cat: "IMG" },
+    { hex: "59 A6 6A 95", type: "Sun Rasterfile", cat: "IMG" },
+    { hex: "67 69 6D 70 20 78 63 66 20 76", type: "GIMP XCF File", cat: "IMG" },
+
+    // 📄 Sənəd Faylları (DOC)
     { hex: "25 50 44 46", type: "PDF Document", cat: "DOC" },
-    { hex: "50 4B 03 04", type: "ZIP Archive", cat: "ARC" },
-    { hex: "52 61 72 21", type: "RAR Archive", cat: "ARC" },
-    { hex: "4D 5A", type: "Windows EXE", cat: "EXE" },
-    { hex: "7F 45 4C 46", type: "Linux ELF", cat: "EXE" },
-    { hex: "49 44 33", type: "MP3 Audio", cat: "MED" },
-    { hex: "00 00 00 18", type: "MP4 Video", cat: "MED" },
-    { hex: "D4 C3 B2 A1", type: "PCAP Dump", cat: "SYS" }
+    { hex: "D0 CF 11 E0 A1 B1 1A E1", type: "Old MS Office (DOC/XLS/PPT)", cat: "DOC" },
+    { hex: "50 4B 03 04", type: "OOXML (DOCX, XLSX, PPTX) / ZIP", cat: "DOC/ARC" },
+    { hex: "7B 5C 72 74 66", type: "RTF Document", cat: "DOC" },
+    { hex: "25 21 50 53", type: "PostScript Document", cat: "DOC" },
+    { hex: "3C 21 44 4F 43 54 59 50 45 20 68 74 6D 6C", type: "HTML Document (DOCTYPE)", cat: "WEB" },
+    { hex: "3C 3F 78 6D 6C", type: "XML Document", cat: "WEB/DOC" },
+    { hex: "53 4D 46", type: "StarOffice Calc File", cat: "DOC" },
+    { hex: "53 44 57", type: "StarOffice Writer File", cat: "DOC" },
+    
+    // 🎧 Multimedia Faylları (MED)
+    { hex: "49 44 33", type: "MP3 Audio (ID3 Tag)", cat: "MED" },
+    { hex: "00 00 00 18", type: "MP4/MOV Container (FTYP)", cat: "MED" },
+    { hex: "4D 54 68 64", type: "MIDI File", cat: "MED" },
+    { hex: "46 4C 56 01", type: "Flash Video (FLV)", cat: "MED" },
+    { hex: "4F 67 67 53", type: "OGG (Vorbis/Theora/FLAC)", cat: "MED" },
+    { hex: "1A 45 DF A3", type: "Matroska (MKV, MKA)", cat: "MED" },
+    { hex: "47", type: "MPEG-TS (Transport Stream)", cat: "MED" },
+    { hex: "30 26 B2 75 8E 66 CF 11", type: "ASF/WMV/WMA", cat: "MED" },
+    { hex: "57 48 44 31", type: "Windows Heap Dump (WHD)", cat: "MED" },
+    { hex: "41 53 44 46", type: "Adobe Sound Document", cat: "MED" },
+    { hex: "56 4D 44 4B", type: "VMDK Virtual Disk (v5+)", cat: "SYS" },
+    { hex: "49 49 53 4F", type: "IFF File (Amiga)", cat: "MED" },
+    { hex: "46 57 53", type: "Flash Shockwave (SWF)", cat: "MED" },
+
+    // 🗜️ Arxiv Faylları (ARC)
+    { hex: "52 61 72 21 1A 07 00", type: "RAR Archive (v5.0-dən əvvəl)", cat: "ARC" },
+    { hex: "52 61 72 21 1A 07 01 00", type: "RAR Archive (v5.0+)", cat: "ARC" },
+    { hex: "37 7A BC AF 27 1C", type: "7z Archive", cat: "ARC" },
+    { hex: "1F 8B", type: "GZIP Archive", cat: "ARC" },
+    { hex: "4D 53 43 46", type: "Windows Cabinet File (CAB)", cat: "ARC" },
+    { hex: "1F 9D", type: "Compress (.Z) LZW", cat: "ARC" },
+    { hex: "41 52 21 3C 61 72 63 68", type: "Debian Archive (deb)", cat: "ARC" },
+    { hex: "41 52 21 0A", type: "Unix Archive (ar)", cat: "ARC" },
+    { hex: "ED AB EE DB", type: "RedHat Package Manager (RPM)", cat: "ARC" },
+    { hex: "53 50 30 31", type: "Amazon Kindle Update Package", cat: "ARC" },
+
+    // 🖥️ İcrayi & Sistem Faylları (EXE/SYS)
+    { hex: "4D 5A", type: "Windows EXE/DLL/SYS", cat: "EXE/SYS" },
+    { hex: "7F 45 4C 46", type: "Linux ELF (Executable)", cat: "EXE" },
+    { hex: "FE ED FA CE", type: "macOS Mach-O (32-bit)", cat: "EXE" },
+    { hex: "CA FE BA BE", type: "Java Class File", cat: "EXE" },
+    { hex: "23 21", type: "Script (Shell Script, Python, Perl)", cat: "SCR" }, // Shebang
+    { hex: "D4 C3 B2 A1", type: "PCAP (Network Dump)", cat: "SYS" },
+    { hex: "0A 0D 0D 0A", type: "PCAPNG (Next Generation Dump)", cat: "SYS" },
+    { hex: "49 4E 46 4F", type: "Windows INF File", cat: "SYS" },
+    { hex: "4B 44 4D 56", type: "VMWare Virtual Disk (VMDK Header)", cat: "SYS" },
+    { hex: "01 00 00 00", type: "Windows Shortcut (LNK)", cat: "SYS" },
+    { hex: "52 54 53 32", type: "Windows System Restore", cat: "SYS" },
+
+    // 🗄️ Verilənlər Bazası və Xüsusi Fayllar (DB)
+    { hex: "53 51 4C 69 74 65 20 66 6F 72 6D 61 74 20 33 00", type: "SQLite Database", cat: "DB" },
+    { hex: "53 74 61 6E 64 61 72 64 20 4A 65 74", type: "Microsoft Access DB (MDB)", cat: "DB" },
+    { hex: "00 01 00 00 53 74 61 6E 64 61 72 64 20 4A 65 74", type: "MS Access 2007 (ACCDB)", cat: "DB" },
+    { hex: "50 57 53 33", type: "Password Gorilla DB", cat: "DB" },
+    { hex: "BE BA FE CA", type: "Palm Desktop Calendar Archive (DBA)", cat: "DB" },
+
+    // 📐 CAD və Qrafika Xüsusi Formatları (CAD/FNT)
+    { hex: "41 43 31 30", type: "AutoCAD Drawing (DWG)", cat: "CAD" },
+    { hex: "48 50 49 4E", type: "HP-GL/2 Plotter", cat: "CAD" },
+    { hex: "44 43 4D", type: "DICOM Image", cat: "MED" },
+    { hex: "43 46 44 37", type: "CorelDRAW File (CDR)", cat: "DOC" },
+    { hex: "32 30 30 32", type: "Autodesk Inventor", cat: "CAD" },
+    { hex: "4D 54 41 58", type: "Autodesk MAX", cat: "CAD" },
+    { hex: "4F 50 43 46", type: "OpenType Font (OTF)", cat: "FNT" },
+    { hex: "74 72 75 65", type: "TrueType Font (TTF)", cat: "FNT" },
+    { hex: "34 33 42 41", type: "3ds Max Scene File", cat: "CAD" },
+
+    // 🎮 Oyun və Digər Xüsusi Formatlar (GAM)
+    { hex: "49 57 41 44", type: "Doom WAD File", cat: "GAM" },
+    { hex: "52 53 49 46", type: "RSS Feed / XML", cat: "WEB" },
+    { hex: "48 58 44 4D", type: "HexDump Utility Output", cat: "TXT" },
+    { hex: "30 78 30", type: "Windows Registry Hive", cat: "SYS" },
+    
+    // Əlavə, Az Görülən İmzalar
+    { hex: "53 51 4C 69", type: "SQLite Format 3 (Short)", cat: "DB" },
+    { hex: "41 53 46", type: "Advanced Systems Format (ASF)", cat: "MED" },
+    { hex: "50 4B 05 06", type: "ZIP Archive (End of Central Directory)", cat: "ARC" },
+    { hex: "50 48 54 4F 53 48 4F 50", type: "PHPTOSHOP Image", cat: "IMG" },
+    { hex: "41 43 31 30 31 35", type: "AutoCAD DWG (R2000)", cat: "CAD" },
+    { hex: "41 43 31 30 31 38", type: "AutoCAD DWG (R2004)", cat: "CAD" },
+    { hex: "50 43 44 20", type: "Kodak Photo CD Image", cat: "IMG" },
+    { hex: "4F 46 44 20 31 2E 30", type: "Open Font Format (OFD)", cat: "FNT" },
+    { hex: "49 53 43 46", type: "Internet Scout Checklist Format", cat: "SYS" },
+    { hex: "52 49 46 46", type: "RIFF Container (General)", cat: "SYS" },
+    { hex: "49 43 45 44", type: "ICED Txt", cat: "TXT" },
+    { hex: "54 65 6E 73 6F 72 46 6C 6F 77", type: "TensorFlow Checkpoint", cat: "DB" },
+    { hex: "4E 45 53 1A", type: "Nintendo NES ROM", cat: "GAM" },
+    { hex: "47 42 43 56", type: "Game Boy Color ROM", cat: "GAM" },
+    { hex: "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00", type: "Palm PDB Header (Offset)", cat: "DB" },
+    { hex: "53 49 54 21", type: "StuffIt Archive", cat: "ARC" },
+    { hex: "78 61 72 21", type: "Apple XAR Archive", cat: "ARC" },
+    { hex: "30 82", type: "ASN.1/DER (Certificates/PKCS)", cat: "SYS" },
+    { hex: "00 00 01 BA", type: "MPEG Program Stream", cat: "MED" }
 ];
 
 /* --- STATE --- */
