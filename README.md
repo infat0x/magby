@@ -66,6 +66,8 @@ Since this is a static web application, no backend installation is required.
 3.  **Launch:**
     Simply open `index.html` in any modern web browser.
 
+    https://magby.site
+
 ## 📊 Supported Formats (Signature Database)
 
 The current version supports detection for the following file signatures:
