@@ -25,7 +25,7 @@ const i18n = {
     az: {
         app_title: "Sehrli Baytlar",
         input_header: "Giriş Mənbəyi",
-        drag_drop: "Faylı bura toxundurun",
+        drag_drop: "Faylı bura daxil edin",
         or: "VƏ YA",
         result_header: "Analiz Hesabatı",
         filename: "Fayl Adı",
