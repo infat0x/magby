@@ -1,4 +1,3 @@
-/* --- TRANSLATION DATA --- */
 const i18n = {
     en: {
         app_title: "Magic Bytes",
@@ -72,7 +71,7 @@ const i18n = {
 };
 
 const signatures = [
-    // 🖥️ Sistem & Skript Faylları (EXE/SCR/SYS)
+    // sys types
     { hex: "23 21", type: "Script (Shebang)", cat: "SCR" },
     { hex: "4D 5A", type: "Windows EXE/DLL/SYS", cat: "EXE/SYS" },
     { hex: "7F 45 4C 46", type: "Linux ELF (Executable)", cat: "EXE" },
@@ -89,7 +88,7 @@ const signatures = [
     { hex: "73 64 62 66", type: "Windows Customized Database (SDB)", cat: "SYS" },
     { hex: "4C 50 4B 53 48 48 52 48", type: "journald log file", cat: "SYS" },
 
-    // 🗄️ Verilənlər Bazası (DB)
+    // db types
     { hex: "53 51 4C 69 74 65 20 66 6F 72 6D 61 74 20 33 00", type: "SQLite Database (Format 3)", cat: "DB" },
     { hex: "50 57 53 33", type: "Password Gorilla Database (PWS3)", cat: "DB" },
     { hex: "BE BA FE CA", type: "Palm Desktop Calendar Archive (DBA)", cat: "DB" },
@@ -99,7 +98,7 @@ const signatures = [
     { hex: "00 01 00 00 53 74 61 6E 64 61 72 64 20 4A 65 74 20 44 42", type: "Microsoft Access Database (MDB)", cat: "DB" },
     { hex: "44 55 43 4B", type: "DuckDB Database File", cat: "DB" },
 
-    // 🖼️ Şəkil Faylları (IMG)
+    // img types
     { hex: "FF D8 FF", type: "JPEG Image (JFIF/Exif)", cat: "IMG" },
     { hex: "89 50 4E 47", type: "PNG Image", cat: "IMG" },
     { hex: "47 49 46 38", type: "GIF Image", cat: "IMG" },
@@ -125,7 +124,7 @@ const signatures = [
     { hex: "44 52 41 43 4F", type: "Draco Compressed 3D Model", cat: "IMG" },
     { hex: "00 00 00 0C 4A 58 4C 20 0D 0A 87 0A", type: "JPEG XL Format (JXL)", cat: "IMG" },
 
-    // 🎧 Multimedia Faylları (MED)
+    // media types
     { hex: "49 44 33", type: "MP3 Audio (ID3v2)", cat: "MED" },
     { hex: "4D 54 68 64", type: "MIDI Sound File (MThd)", cat: "MED" },
     { hex: "00 00 00 18", type: "MP4/MOV Container (FTYP)", cat: "MED" },
@@ -143,7 +142,7 @@ const signatures = [
     { hex: "23 21 41 4D 52", type: "Adaptive Multi-Rate Codec (AMR)", cat: "MED" },
     { hex: "23 21 53 49 4C 4B 0A", type: "Skype Audio Codec (SILK)", cat: "MED" },
 
-    // 🗜️ Arxiv Faylları (ARC)
+    // archive types
     { hex: "50 4B 03 04", type: "ZIP Archive / OOXML", cat: "ARC/DOC" },
     { hex: "52 61 72 21 1A 07 00", type: "RAR Archive (v1.50+)", cat: "ARC" },
     { hex: "52 61 72 21 1A 07 01 00", type: "RAR Archive (v5.00+)", cat: "ARC" },
@@ -162,7 +161,7 @@ const signatures = [
     { hex: "44 41 41", type: "Direct Access Archive (DAA)", cat: "ARC" },
     { hex: "78 61 72 21", type: "Apple XAR Archive", cat: "ARC" },
 
-    // 📄 Sənəd & Mətn Faylları (DOC/WEB/TXT)
+    // document types
     { hex: "25 50 44 46", type: "PDF Document", cat: "DOC" },
     { hex: "D0 CF 11 E0 A1 B1 1A E1", type: "Compound File Binary Format (MS Office, MSI)", cat: "DOC/SYS" },
     { hex: "7B 5C 72 74 66 31", type: "Rich Text Format (RTF)", cat: "DOC" },
@@ -174,7 +173,7 @@ const signatures = [
     { hex: "3C 3F 78 6D 6C 20", type: "XML Document (<?xml )", cat: "WEB/DOC" },
     { hex: "2D 2D 2D 2D 2D 42 45 47 49 4E 20 43 45 52 54 49 46 49 43 41 54 45 2D 2D 2D 2D 2D", type: "PEM encoded X.509 Certificate", cat: "SYS" },
 
-    // 🎮 Oyun & Konsol Faylları (GAM)
+    // game types
     { hex: "49 57 41 44", type: "Doom Internal WAD File (IWAD)", cat: "GAM" },
     { hex: "4E 45 53 1A", type: "Nintendo NES ROM File", cat: "GAM" },
     { hex: "43 36 34 20 74 61 70 65 20 69 6D 61 67 65 20 66 69 6C 65", type: "Commodore 64 Tape Image (T64)", cat: "GAM" },
@@ -182,17 +181,17 @@ const signatures = [
     { hex: "43 36 34 46 69 6C 65 00", type: "Commodore 64 Binary File (P00)", cat: "GAM" },
     { hex: "44 52 41 43 4F", type: "Draco Compressed 3D Model", cat: "GAM" },
 
-    // 🖋️ Şrift Faylları (FNT)
+    // font types
     { hex: "00 01 00 00 00", type: "TrueType Font (TTF)", cat: "FNT" },
     { hex: "4F 54 54 4F", type: "OpenType Font (OTF)", cat: "FNT" },
     { hex: "77 4F 46 46", type: "WOFF File Format 1.0", cat: "FNT" },
     { hex: "77 4F 46 32", type: "WOFF File Format 2.0", cat: "FNT" },
 
-    // 🌐 Web Faylları (WEB)
+    // web types
     { hex: "3C 3F 78 6D 6C", type: "XML Document", cat: "WEB" },
     { hex: "3C 21 44 4F 43 54 59 50 45 20 68 74 6D 6C", type: "HTML Document (DOCTYPE)", cat: "WEB" },
 
-    // ⚙️ Digər Xüsusi Fayllar
+    // other types
     { hex: "53 54 45 41 4D", type: "Steam Archive (Compressed data)", cat: "SYS/ARC" },
     { hex: "42 41 43 4B 4D 49 4B 45 44 49 53 4B", type: "AmiBack Amiga Backup Data (BAC)", cat: "ARC" },
     { hex: "49 4E 44 58", type: "AmiBack Amiga Backup Index (IDX)", cat: "ARC" },
@@ -203,21 +202,21 @@ const signatures = [
     { hex: "46 4C 68 64", type: "FL Studio Project File (FLP)", cat: "MED" },
 ];
 
-/* --- STATE --- */
+
 let currentLang = 'en';
 const fileInput = document.getElementById('fileInput');
 const base64Input = document.getElementById('base64Input');
 const langSelect = document.getElementById('langSelect');
 const themeToggle = document.getElementById('themeToggle');
 
-/* --- EVENTS --- */
+
 document.addEventListener('DOMContentLoaded', updateText);
 langSelect.addEventListener('change', (e) => { currentLang = e.target.value; updateText(); });
 themeToggle.addEventListener('click', toggleTheme);
 fileInput.addEventListener('change', (e) => processFile(e.target.files[0]));
 base64Input.addEventListener('input', (e) => { if(e.target.value.trim()) processBase64(e.target.value.trim()); });
 
-/* --- FUNCTIONS --- */
+
 function toggleTheme() {
     const html = document.documentElement;
     const isDark = html.getAttribute('data-theme') === 'dark';
@@ -244,10 +243,10 @@ function processFile(file) {
     document.getElementById('resName').innerText = file.name;
     document.getElementById('resSize').innerText = formatBytes(file.size);
 
-    // --- PREVIEW LOGIC START ---
+ 
     const previewBox = document.getElementById('filePreview');
     
-    // Check if element exists to prevent errors
+  
     if (previewBox) {
         if (file.type.startsWith('image/')) {
             const imageUrl = URL.createObjectURL(file);
@@ -264,7 +263,7 @@ function processFile(file) {
             `;
         }
     }
-    // --- PREVIEW LOGIC END ---
+  
 
     const reader = new FileReader();
     reader.onload = function(e) {
